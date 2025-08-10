@@ -1,0 +1,123 @@
+name: CI-EC2
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        default: ${{ github.sha }}
+      php-image-tag:
+        type: string
+        default: 8.3.9-fpm-bookworm
+      target-env:
+        type: string
+      aws-region:
+        default: ap-northeast-2
+        type: string
+      devops-bucket-name:
+        type: string
+        required: true
+    secrets:
+      AWS_ACCOUNT:
+        required: true
+jobs:
+  packaging:
+    name: Packaging
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    strategy:
+      matrix:
+        node-version: ["20.x"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Docker Buildx setup
+        uses: docker/setup-buildx-action@v3
+        with:
+          platforms: linux/arm64,linux/amd64
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        id: aws-configure
+        with:
+          aws-region: ${{ inputs.aws-region }}
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/githubactions-${{ github.event.repository.name }}
+
+      - name: Login to AWS ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registries: ${{ steps.aws-configure.outputs.aws-account-id }}
+          registry-type: private
+
+      - name: Install php dependencies
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          php_version: 8.2
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Upload source-code
+        id: upload-source-code
+        working-directory: ./
+        env:
+          APP_NAME: ${{ vars.APPNAME }}
+          TARGET_ENV: ${{ inputs.target-env }}
+          AWS_REGION: ${{ inputs.aws-region }}
+          DEVOPS_S3_BUCKET: ${{ inputs.devops-bucket-name }}
+          CUSTOM_PHP_IMAGE: ${{ steps.login-ecr.outputs.registry }}/php:${{ inputs.php-image-tag }}
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          SOURCE_TGZ: source.${{ inputs.version }}.tgz
+        run: |
+          echo "Create Deployment Kit & Upload ==========================="
+
+          CODEDEPLOY_DIR=./codedeploy/ec2
+          DESTINATION=${CODEDEPLOY_DIR}/deploy-vars
+
+          cat <<EOF >$DESTINATION
+          TARGET_ENV=${{ env.TARGET_ENV }}
+          CUSTOM_PHP_IMAGE=${{ env.CUSTOM_PHP_IMAGE }}
+          ECR_REGISTRY=${{ env.ECR_REGISTRY }}
+          AWS_REGION=${{ env.AWS_REGION }}
+          SECRET_ARN=${{ env.APP_NAME }}-${{ env.TARGET_ENV }}-application-secret
+          SOURCE_TGZ=${{ env.SOURCE_TGZ }}
+          EOF
+
+          ROBOTS_TXT_TEMPLATE=./public/robots.txt.template
+          if [ "${{ env.TARGET_ENV }}" = "production" ]; then
+              echo '${{ vars.ROBOTS_TXT_PRODUCTION }}' > $ROBOTS_TXT_TEMPLATE
+              
+              NAVER_SITE_VERIFICATION_TOKEN="${{ vars.NAVER_SITE_VERIFICATION_HTML }}"
+              echo "${NAVER_SITE_VERIFICATION_TOKEN}" > ./public/${NAVER_SITE_VERIFICATION_TOKEN#"naver-site-verification: "}
+          else 
+              echo '${{ vars.ROBOTS_TXT_NONPRODUCTION }}' > $ROBOTS_TXT_TEMPLATE
+          fi
+
+          tar -zcf ${CODEDEPLOY_DIR}/source.tgz \
+              --exclude=./.git \
+              --exclude='.env*' \
+              --exclude=codedeploy \
+              --exclude=.github \
+              --exclude=.vscode \
+              --exclude=README.md \
+              --exclude=DOCKER_ENV \
+              --exclude=Dockerfile-php-build \
+              --exclude=docker_tag \
+              --exclude=output.log \
+              ./*
+
+          DEPLOY_TGZ=deploy.${{ inputs.version }}.tgz
+          cd ${CODEDEPLOY_DIR} && tar -zcf ${DEPLOY_TGZ} ./*
+                                
+          aws s3 cp --region ${{ env.AWS_REGION }} --acl private ${DEPLOY_TGZ} s3://${{ env.DEVOPS_S3_BUCKET }}/
+
+          echo "Create Deployment Kit & Upload End =======================" ;echo ;echo

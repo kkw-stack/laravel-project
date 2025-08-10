@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-reservation.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+
+    /* RESERVATION */ 
+    .jt-reservation__inner { gap: 80rem; }
+    .jt-reservation__form .jt-form__fieldset { gap: 60rem; }
+    .jt-reservation__form .jt-form__label:not(:has(.sr-only)) + .jt-form__data { margin-top: 12rem; }
+    .jt-reservation__form .jt-form__explain + .jt-form__data { margin-top: 12rem; }
+
+    .jt-reservation__step--03 { margin-top: -40rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+    /* RESERVATION */
+    .jt-reservation__inner { flex-flow: row wrap; }
+    .jt-reservation .jt-reservation__form { max-width: inherit; }
+    .jt-reservation .jt-reservation__result { max-width: inherit; }
+    
+    .jt-reservation__result-content { padding: 40rem; }
+    .jt-reservation__result-content-inner { padding: 0; }
+    .jt-reservation__result-agree { margin-top: 16rem; }
+    .jt-reservation__result-payment { padding-top: 24rem; }
+
+    .jt-reservation .jt-reservation__result-content-inner,
+    body.reservation-payment .jt-reservation .jt-reservation__result-content-inner { max-height: inherit; }
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* RESERVATION */
+    .jt-reservation__inner { gap: 60rem; }
+    .jt-reservation__form .jt-form__fieldset { gap: 40rem; }
+
+    .jt-reservation__step--03 { margin-top: -20rem; }
+    
+    .jt-reservation__result-content { padding: 30rem; }
+    .jt-reservation__result-list > li { gap: 20rem; }
+    .jt-reservation__result-price { gap: 20rem; }
+    .jt-reservation__result-control { display: flex; flex-direction: column-reverse; margin-top: 24rem; }
+
+    .jt-reservation__result .jt-reservation__explain { margin-top: 20rem; }
+
+    .jt-reservation .jt-datepicker { padding: 30rem; }
+    .jt-reservation .jt-datepicker .air-datepicker-nav { margin-bottom: 30rem; }
+
+    /* SUCCESS */
+    body.reservation-success .article__section-title { margin-bottom: 20rem; }
+
+    /* CERT */
+    body.reservation-cert .article__section-title { margin-bottom: 20rem; }
+
+    /* LIST */
+    body.reservation-list .jt-search { padding-bottom: 12rem; }
+    body.reservation-list .jt-category { margin-bottom: 40rem; }
+    .jt-reservation__list { gap: 30rem 20rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* RESERVATION */
+    .jt-reservation__inner { gap: 40rem; }
+    .jt-reservation__form .jt-form__label:not(:has(.sr-only)) + .jt-form__data { margin-top: 8rem; }
+    .jt-reservation__form .jt-form__explain + .jt-form__data { margin-top: 8rem; }
+
+    .jt-reservation__result-content { padding: 20rem; }
+    .jt-reservation__result-title { margin-bottom: 20rem; }
+    .jt-reservation__result-list > li { gap: 20rem; }
+    .jt-reservation__result-list > li + li { margin-top: 8rem; }
+    .jt-reservation__result-last { padding-top: 20rem; margin-top: 20rem; }
+    .jt-reservation__result-agree { margin-top: 12rem; }
+    .jt-reservation__result-payment { padding-top: 20rem; }
+    .jt-reservation__result-number { margin-top: 20rem; }
+    .jt-reservation__result .jt-form__warning { margin-top: 20rem; }
+    .jt-reservation__result-explain .jt-icon { position: relative; top: 2rem; width: 16rem; height: 16rem; }
+
+    .jt-timepicker__label { margin-bottom: 6rem; }
+    .jt-timepicker__item label { padding: 12rem 4rem; }
+    .jt-timepicker__item label em { padding: 0 8rem; }
+
+    .jt-reservation .jt-datepicker { padding: 20rem; }
+    .jt-reservation .jt-datepicker .air-datepicker-nav { margin-bottom: 20rem; gap: 120rem; }
+    .jt-reservation .jt-datepicker .air-datepicker-cell { height: auto; }
+    .jt-reservation .jt-datepicker .air-datepicker-body--day-name { width: 100%; height: auto; }
+    .jt-reservation .jt-datepicker .air-datepicker-body--cells { gap: 8rem; }
+    .jt-reservation .jt-datepicker .air-datepicker-body--cells.-days- .air-datepicker-cell { width: 100%; }
+    .jt-reservation .jt-datepicker .air-datepicker-body--cells.-days- .air-datepicker-cell-inner { padding-top: 100%; }
+
+    .jt-reservation__tooltip { position: relative; top: auto; left: 32rem; margin-top: 8rem; }
+    .jt-reservation__tooltip-chervon { left: 12rem; top: 0; margin-top: -10rem; transform: rotate(90deg); }
+
+    .jt-reservation__price-item { padding: 20rem 0; gap: 20rem; }
+    .jt-reservation__price-info { gap: 20rem; }
+    .jt-reservation__price-control { gap: 40rem; }
+    .jt-reservation__price-control > span { width: 40rem; margin-left: -20rem; }
+
+    .jt-timepicker__inner { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* PAYMENT */
+    .jt-reservation__userinfo > li { padding: 20rem 0; gap: 20rem; }
+    .jt-reservation__explain > li { padding-left: 10rem; }
+    .jt-reservation__payment-label { padding: 14rem 10rem; }
+
+    /* LIST */
+    .jt-reservation__list { grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 20rem; }
+
+}

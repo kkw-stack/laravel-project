@@ -1,0 +1,99 @@
+x-laravel-container: &laravel-container
+  image: ${CUSTOM_PHP_IMAGE:?error}
+  user: ${DOCKER_UID:-1001}:${DOCKER_GID:-1001}
+  expose:
+    - 9000
+  restart: always
+  volumes:
+    - ${APP_SOURCE_DIR}/html:/var/www/html
+    - ${APP_SOURCE_DIR}/user-contents/app-public:${APP_SOURCE_DIR}/user-contents/app-public:rw
+    - ${DEPLOY_DIR}/deploy/configurations/php-fpm/php/php.ini:/usr/local/etc/php/php.ini:ro
+    - ${DEPLOY_DIR}/deploy/configurations/php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
+    - ${DEPLOY_DIR}/deploy/configurations/php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d:ro
+    - ${DEPLOY_DIR}/deploy/entrypoints/supervisord.queue.conf:/etc/supervisord.queue.conf:ro
+    - ${DEPLOY_DIR}/deploy/entrypoints/queue-entrypoint.sh:/usr/local/bin/queue-entrypoint:ro
+    - ${DEPLOY_DIR}/deploy/entrypoints/schedule-exec.sh:/usr/local/bin/schedule-exec:ro
+    - ${DEPLOY_DIR}/deploy/entrypoints/supervisord.app.conf:/etc/supervisord.app.conf:ro
+    - ${DEPLOY_DIR}/deploy/entrypoints/app-entrypoint.sh:/usr/local/bin/app-entrypoint:ro
+    - ${DEPLOY_DIR}/deploy/scripts/wait-for-it.sh:/usr/local/bin/wait-for-it:ro
+  networks:
+    - frontend
+    - db-global
+
+services:
+  # db-migration 비활성화
+  # 주석 해제하면 배포할 때 마다 DB 마이그레이션이 발생한다.
+  # db-migrator:
+  #   <<: *laravel-container
+  #   container_name: ${APP_NAME}-${TARGET_ENV}-db-migrator
+  #   restart: no
+  #   entrypoint:
+  #     - sh
+  #     - -c
+  #     - "wait-for-it ${DB_HOST:-mariadb}:${DB_PORT:-3306} -s -t 100 && /usr/local/bin/php /var/www/html/artisan migrate --force"
+
+  main:
+    <<: *laravel-container
+    labels: 
+      - "logging=promtail"
+      - "logging_type=php"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION:-dev}"
+      - "logging_site=${APP_DOMAIN}"
+    container_name: ${APP_NAME}-${TARGET_ENV}-main
+    entrypoint: ["/usr/local/bin/app-entrypoint"]
+
+  queue:
+    <<: *laravel-container
+    labels: 
+      - "logging=promtail"
+      - "logging_type=php"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION:-dev}"
+      - "logging_site=${APP_DOMAIN}"
+    container_name: ${APP_NAME}-${TARGET_ENV}-queue
+    entrypoint: ["/usr/local/bin/queue-entrypoint"]
+    environment:
+      DB_HOST: ${DB_HOST:?error}
+      DB_PORT: ${DB_PORT:?error}
+
+  nginx:
+    container_name: ${APP_NAME}-${TARGET_ENV}-nginx
+    image: nginx:1.27-bookworm
+    restart: always
+    depends_on:
+      - main
+    environment:
+      - SERVER_NAME=${APP_DOMAIN}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.${APP_NAME}-${TARGET_ENV}.rule=Host(`${APP_DOMAIN}`) || Host(`www.${APP_DOMAIN}`)"
+      - "traefik.http.routers.${APP_NAME}-${TARGET_ENV}.entrypoints=websecure"
+      - "traefik.http.routers.${APP_NAME}-${TARGET_ENV}.middlewares=${APP_NAME}-${TARGET_ENV}@docker"
+      - "traefik.http.services.${APP_NAME}-${TARGET_ENV}.loadbalancer.server.port=80"
+      - "traefik.http.services.${APP_NAME}-${TARGET_ENV}.loadbalancer.server.scheme=h2c"
+      - "traefik.http.middlewares.${APP_NAME}-${TARGET_ENV}.ipallowlist.sourcerange=${IP_ALLOW_LIST:-0.0.0.0/0}"
+      - "logging_type=nginx"
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION:-dev}"
+      - "logging_site=${APP_DOMAIN}"
+    networks:
+      - web
+      - frontend
+    volumes:
+      - ${DEPLOY_DIR}/deploy/configurations/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${DEPLOY_DIR}/deploy/configurations/nginx/templates:/etc/nginx/templates
+      - ${APP_SOURCE_DIR}/html:/var/www/html
+      - ${APP_SOURCE_DIR}/user-contents/app-public:${APP_SOURCE_DIR}/user-contents/app-public:rw
+
+networks:
+  web:
+    external: true
+  frontend:
+  db-global:
+    external: true

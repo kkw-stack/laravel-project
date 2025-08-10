@@ -1,0 +1,47 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /medongaule/deploy
+    overwrite: yes
+
+file_exists_behavior: OVERWRITE
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
+    mode: 755
+    type:
+      - directory
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
+    mode: 644
+    type:
+      - file
+  - object: /scripts
+    pattern: "*.sh"
+    owner: ec2-user
+    group: ec2-user
+    mode: 755
+    type:
+      - file
+  - object: /entrypoints
+    pattern: "*.sh"
+    owner: ec2-user
+    group: ec2-user
+    mode: 755
+    type:
+      - file
+
+hooks:
+  AfterInstall:
+    - location: scripts/pre-deploy.sh
+      timeout: 720
+      runas: ec2-user
+    - location: scripts/deploy.sh
+      timeout: 720
+      runas: ec2-user

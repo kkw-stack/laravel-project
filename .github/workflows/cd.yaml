@@ -1,0 +1,114 @@
+name: CD
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        default: ${{ github.sha }}
+      aws-region:
+        required: false
+        default: ap-northeast-2
+        type: string
+      devops-bucket-name:
+        type: string
+        required: true
+      target-env:
+        type: string
+        required: true
+    secrets:
+      AWS_ACCOUNT:
+        required: true
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    name: Create deploy.sh
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        id: aws-configure
+        with:
+          aws-region: ${{ inputs.aws-region }}
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/githubactions-${{ github.event.repository.name }}
+
+      - name: Deploy to instance
+        id: deploy
+        env:
+          APP_NAME: ${{ vars.APPNAME }}
+          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT }}.dkr.ecr.${{ inputs.aws-region }}.amazonaws.com
+          CODEDEPLOY_APPLICATION_NAME: ${{ vars.APPNAME }}-${{ inputs.target-env }}-server-application
+          CODEDEPLOY_DEPLOYMENT_GROUP_NAME: ${{ vars.APPNAME }}-${{ inputs.target-env }}-server-application-deployment-group
+          SOURCE_NAME: deploy.${{ inputs.version }}.tgz
+          DEVOPS_BUCKET_NAME: ${{ inputs.devops-bucket-name }}
+          TARGET_ENV: ${{ inputs.target-env }}
+        run: |
+          DIR=$(dirname $0)
+          DEPLOYMENT_ID=${DIR}/deployment-id
+          aws deploy create-deployment \
+              --application-name ${{ env.CODEDEPLOY_APPLICATION_NAME }} \
+              --deployment-config-name CodeDeployDefault.OneAtATime \
+              --deployment-group-name ${{ env.CODEDEPLOY_DEPLOYMENT_GROUP_NAME }} \
+              --s3-location bucket=${{ env.DEVOPS_BUCKET_NAME }},bundleType=tgz,key=${{ env.SOURCE_NAME }} \
+              --output text \
+              --query 'deploymentId' \
+              > $DEPLOYMENT_ID
+
+          echo deployment-id="$(cat $DEPLOYMENT_ID)" >> $GITHUB_OUTPUT
+
+      - name: Wait for deployment
+        id: wait-deploy
+        env:
+          DEPLOYMENT_ID: ${{ steps.deploy.outputs.deployment-id }}
+        run: |
+          aws deploy wait deployment-successful --deployment-id=${{ env.DEPLOYMENT_ID }}
+
+      - name: Set yyyyMMddHHMMSS
+        id: now
+        if: always()
+        run: echo "NOW=$(date '+%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Clear tags
+        if: always()
+        run: |
+          # FIXME: grep시 결과값이 비어있을 때 마다 Exception 발생하여 이렇게 해둠.
+          TAGS=$(echo "$(git tag --points-at=HEAD | grep '${{ inputs.target-env }}-deploy*')")
+
+          for TAG in ${TAGS[@]}
+          do
+            git -d $TAG
+            git push --delete origin $TAG
+          done
+
+      - name: Attach tag if deploy failed
+        uses: actions/github-script@v7
+        if: failure()
+        env:
+          NOW: ${{ steps.now.outputs.NOW }}
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ inputs.target-env }}-deploy-fail-${{ env.NOW }}',
+              sha: context.sha
+            })
+
+      - name: Attach tag if deploy success
+        uses: actions/github-script@v7
+        if: success()
+        env:
+          NOW: ${{ steps.now.outputs.NOW }}
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ inputs.target-env }}-deploy-success-${{ env.NOW }}',
+              sha: context.sha
+            })

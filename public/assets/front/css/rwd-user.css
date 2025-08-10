@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-user.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* LOGIN */
+    body.user-login .article__header:has(.article__title.jt-typo--02) { padding-bottom: 50rem; }
+
+    /* FIND ID */
+    body.user-find-id .article__section-title { margin-bottom: 20rem; }
+
+    /* CHANGE PASSWORD */
+    body.user-change-password .article__section-title { margin-bottom: 20rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* LOGIN */
+    body.user-login .article__header:has(.article__title.jt-typo--02) { padding-bottom: 40rem; }
+    .user-login-form .jt-form__entry .jt-form__valid { margin-bottom: 16rem; }
+    .user-login-utils > a + a:before { margin-top: -.5rem; }
+    .user-login-etc { margin-top: 30rem; padding-top: 30rem; }
+    .user-login-etc__btn span { top: 0; }
+
+    /* CHANGE PASSWORD */
+    body.user-change-password .jt-register-history { margin-bottom: 48rem; }
+
+}

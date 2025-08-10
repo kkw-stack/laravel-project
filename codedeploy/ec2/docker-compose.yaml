@@ -1,0 +1,108 @@
+x-laravel-container: &laravel-container
+  image: ${CUSTOM_PHP_IMAGE:?error}
+  user: ${DOCKER_UID:-1000}:${DOCKER_GID:-1000}
+  expose:
+    - 9000
+  restart: always
+  volumes:
+    - /var/www/html:/var/www/html
+    - /var/www/user-contents/app-public:/var/www/user-contents/app-public:rw
+    - /medongaule/deploy/configurations/php-fpm/php/php.ini:/usr/local/etc/php/php.ini:ro
+    - /medongaule/deploy/configurations/php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
+    - /medongaule/deploy/configurations/php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d:ro
+    - /medongaule/deploy/entrypoints/supervisord.queue.conf:/etc/supervisord.queue.conf:ro
+    - /medongaule/deploy/entrypoints/queue-entrypoint.sh:/usr/local/bin/queue-entrypoint:ro
+    - /medongaule/deploy/entrypoints/schedule-exec.sh:/usr/local/bin/schedule-exec:ro
+    - /medongaule/deploy/entrypoints/supervisord.app.conf:/etc/supervisord.app.conf:ro
+    - /medongaule/deploy/entrypoints/app-entrypoint.sh:/usr/local/bin/app-entrypoint:ro
+    - /medongaule/deploy/scripts/wait-for-it.sh:/usr/local/bin/wait-for-it:ro
+  depends_on:
+    - mariadb
+  networks:
+    - backend
+
+name: medongaule
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.11
+    restart: always
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: yes
+      MARIADB_DATABASE: ${DB_DATABASE:?error}
+      MARIADB_USER: ${DB_USERNAME:?error}
+      MARIADB_PASSWORD: ${DB_PASSWORD:?error}
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+    volumes:
+      - /medongaule/data/mariadb:/var/lib/mysql
+
+  # db-migration 비활성화
+  # 주석 해제하면 배포할 때 마다 DB 마이그레이션이 발생한다.
+  # db-migrator:
+  #   <<: *laravel-container
+  #   container_name: db-migrator
+  #   restart: no
+  #   entrypoint:
+  #     - sh
+  #     - -c
+  #     - "wait-for-it ${DB_HOST:-mariadb}:${DB_PORT:-3306} -s -t 100 && /usr/local/bin/php /var/www/html/artisan migrate --force"
+
+  main:
+    <<: *laravel-container
+    labels: 
+      - "logging=promtail"
+      - "logging_type=php"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION}"
+      - "logging_site=${APP_DOMAIN}"
+    container_name: main
+    entrypoint: ["app-entrypoint"]
+
+  queue:
+    <<: *laravel-container
+    labels: 
+      - "logging=promtail"
+      - "logging_type=php"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION}"
+      - "logging_site=${APP_DOMAIN}"
+    container_name: queue
+    entrypoint: ["queue-entrypoint"]
+    environment:
+      DB_HOST: ${DB_HOST:?error}
+      DB_PORT: ${DB_PORT:?error}
+
+  nginx:
+    container_name: nginx
+    image: nginx:1.27-bookworm
+    restart: always
+    labels:
+      - "logging_type=nginx"
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
+      - "logging_appname=medongaule"
+      - "logging_env=${APP_VERSION}"
+      - "logging_site=${APP_DOMAIN}"
+    ports:
+      - 80:80
+    depends_on:
+      - main
+    environment:
+      - SERVER_NAME=${APP_DOMAIN}
+    networks:
+      - app-net
+      - backend
+    volumes:
+      - /medongaule/deploy/configurations/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /medongaule/deploy/configurations/nginx/templates:/etc/nginx/templates
+      - /var/www/html:/var/www/html
+      - /var/www/user-contents/app-public:/var/www/user-contents/app-public:rw
+
+networks:
+  app-net:
+  backend:

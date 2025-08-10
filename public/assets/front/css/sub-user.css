@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+/*
+ * File    : sub-user.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * LOGIN
+ * FIND ID
+ * CHANGE PASSWORD
+ * HOVER
+ */
+
+
+
+/* **************************************** *
+ * LOGIN
+ * **************************************** */
+body.user-login .article__header:has(.article__title.jt-typo--02) { padding-bottom: 60rem; }
+
+.user-login-form { max-width: 476rem; margin: 0 auto; }
+.user-login-form .jt-form__fieldset { gap: 8rem; }
+.user-login-form .jt-form__control { margin-top: 30rem; }
+.user-login-form .jt-form__action { width: 100%; }
+.user-login-form .jt-form__entry .jt-form__valid { margin-bottom: 12rem; }
+.user-login-form .jt-form__entry .jt-form__valid:empty { margin-bottom: 0; }
+.user-login-form .jt-form__entry:last-child .jt-form__valid { margin-bottom: 0; }
+
+.user-login-utils { display: flex; justify-content: center; margin-top: 20rem; gap: 26rem; }
+.user-login-utils > a { position: relative; color: var(--color-gray-800); transition: color .3s; }
+.user-login-utils > a + a:before { content: ''; position: absolute; left: -14rem; top: 50%; width: 2rem; height: 10rem; margin-top: -1rem; transform: translateY(-50%); background: var(--color-gray-700); }
+html.mac .user-login-utils > a + a:before { margin-top: 0; }
+
+.user-login-etc { margin-top: 40rem; padding-top: 40rem; border-top: 1px solid var(--color-gray-400); }
+.user-login-etc__btn { position: relative; display: block; padding: 18rem 40rem; text-align: center; border-radius: 99rem; font-size: 0; }
+.user-login-etc__btn .jt-icon { width: 24rem; height: 24rem; }
+.user-login-etc__btn span { position: relative; top: 1rem; vertical-align: middle; }
+html.mac .user-login-etc__btn span { top: -1rem; }
+.user-login-etc--kakao { background: #FEE500; }
+.user-login-etc--kakao .jt-icon { margin-right: 10rem; }
+.user-login-etc--kakao .jt-icon svg path { fill: var(--color-black); }
+.user-login-etc--naver { background: #03C75A; color: var(--color-white); margin-top: 8rem; }
+.user-login-etc--naver .jt-icon { margin-right: 8rem; }
+.user-login-etc--naver .jt-icon svg path { fill: var(--color-white); }
+.user-login-etc--guest { padding: 16rem 40rem; background: var(--color-white); margin-top: 30rem; transition: background .3s; }
+.user-login-etc--guest:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid var(--color-gray-600); border-radius: inherit; box-sizing: border-box; }
+.user-login-etc--guest span { top: 0; }
+.user-login-etc--google { padding: 16rem 40rem; background: var(--color-white); transition: background .3s;  }
+.user-login-etc--google:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid var(--color-gray-900); border-radius: inherit; box-sizing: border-box; }
+.user-login-etc--google .jt-icon { margin-right: 8rem; }
+.user-login-etc--google .jt-icon svg path { fill: revert-layer; }
+.user-login-etc--google span { top: 0; }
+
+
+
+/* **************************************** *
+ * FIND ID
+ * **************************************** */
+body.user-find-id .article__section-title { text-align: left; margin-bottom: 40rem; }
+
+
+
+/* **************************************** *
+ * CHANGE PASSWORD
+ * **************************************** */
+body.user-change-password .article__section-title { text-align: left; margin-bottom: 40rem; }
+body.user-change-password .jt-register-history { margin-bottom: 60rem; }
+
+
+
+/* **************************************** *
+ * HOVER
+ * **************************************** */
+@media (hover: hover) and (pointer: fine) {
+
+    /* LOGIN */
+    .user-login-utils > a:hover { color: var(--color-black); }
+    .user-login-etc--guest:hover { background: var(--color-gray-100); }
+    .user-login-etc--google:hover { background: var(--color-gray-100); }
+
+}

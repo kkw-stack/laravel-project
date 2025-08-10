@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+/*
+ * File    : custom.css
+ * Author  : STUDIO-JT (KMS)
+ *
+ * SUMMARY :
+ * TAB
+ * FORMS
+ * SORTABLE
+ * FULLCALENDAR
+ * ACCORDION
+ */
+
+
+
+/* ************************************** *
+ * TAB
+ * ************************************** */
+/* 탭 최상단 버튼 */
+.tab-outside-btn { transform: translateY(calc(-100% + -2.5rem)); }
+
+
+
+/* ************************************** *
+ * FORMS
+ * ************************************** */
+/* FILE */
+.jt-customfile__field { display: inline-block; position: relative; }
+.jt-customfile__input { width: 100%; height: 100%; position: absolute; z-index: 2; opacity: 0; cursor: pointer; }
+
+.jt-customfile__list:empty { display: none !important; }
+
+/* FILE WITH PREVIEW */
+.jt-image-preview img { object-fit: cover; }
+.jt-image-preview button { font-size: 0; cursor: pointer; }
+
+.table .jt-image-preview img { width: 100px; height: 100px; border-radius: 0.25rem; }
+
+/* READONLY */
+.form-control:not(.js-flatpickr-date .form-control):not(.js-flatpickr-datetime .form-control):not([type=file]):read-only { background: var(--bs-gray-100); }
+
+/* CHECKBOX */
+.form-check { padding-left: 0; }
+.form-check .form-check-input { margin-left: 0; margin-right: 0.5rem; }
+
+/* RADIO */
+.form-radio { padding-left: 0; }
+.form-radio .form-radio-input { margin-left: 0; margin-right: 0.5rem; }
+
+
+
+/* ************************************** *
+ * SORTABLE
+ * ************************************** */
+.jt-handle-sort__grap { cursor: grab; }
+
+
+
+/* ************************************** *
+ * FULLCALENDAR
+ * ************************************** */
+.js-fullcalendar { height: 700px; }
+.js-fullcalendar .fc-daygrid-day-frame { cursor: pointer; background: #fff; }
+.js-fullcalendar .fc-daygrid-day.fc-day-today { background-color: transparent; }
+.js-fullcalendar .fc-daygrid-day.fc-day-current { background-color: rgba(101, 113, 255, .2); }
+.js-fullcalendar .fc-event { margin-bottom: 0; }
+.js-fullcalendar .fc-daygrid-day-bg .fc-bg-event { border-left: 0; background: var(--bs-primary); opacity: .05; }
+
+
+
+/* ************************************** *
+ * ACCORDION
+ * ************************************** */
+.jt-table-accordion__item svg { transition: transform .3s; }
+.jt-table-accordion__item.jt-table-accordion--show svg { transform: rotate(180deg); }
+.jt-table-accordion__content { display: none; }
+.table tr:has(.jt-table-accordion__content:not(.jt-table-accordion--show)) { border-width: 0; }
+.table tr:has(.jt-table-accordion__content) + tr { border-top: 0; }

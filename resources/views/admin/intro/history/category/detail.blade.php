@@ -1,0 +1,115 @@
+@extends('admin.partials.layout', [ 'type' => 'primary', 'title' => '걸어온 길' ])
+
+@section('content')
+    <div class="row align-items-center justify-content-between mb-4">
+        <div class="col-auto">
+            <h1 class="page-title fs-4">걸어온 길 카테고리 상세</h1>
+        </div><!-- .col -->
+    </div><!-- .row -->
+
+    <form method="post" novalidate>
+        @csrf
+
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">카테고리 정보</h2>
+                    </div><!-- .card-header -->
+
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="boardTitle" class="form-label">카테고리명 <em>*</em></label>
+                            <input
+                                type="text"
+                                id="boardTitle"
+                                placeholder="카테고리명을 입력해주세요. (공백포함, 20자 이내)"
+                                maxlength="20"
+                                name="title"
+                                @class([
+                                    'form-control',
+                                    'is-invalid' => $errors->has('title'),
+                                ])
+                                value="{{ old('title', $category?->title ?? '') }}"
+                            />
+                            @error('title')
+                                <p class="error invalid-feedback">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-0">
+                            <label for="boardContent" class="form-label">추가 설명</label>
+                            <textarea
+                                id="boardContent"
+                                rows="4"
+                                name="content"
+                                placeholder="추가 설명을 입력해주세요. (공백포함, 100자 이내)"
+                                maxlength="100"
+                                @class([
+                                    'form-control',
+                                    'is-invalid' => $errors->has('content'),
+                                ])
+                            >{{ old('content', $category?->content ?? '') }}</textarea>
+
+                            @error('content')
+                                <p class="error invalid-feedback">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div><!-- .card-body -->
+                </div><!-- .card -->
+            </div><!-- .col -->
+
+            <div class="col-md-12 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex gap-1">
+                                    <button type="submit" class="btn btn-primary">{{ isset($category) ? '수정' : '등록' }}</button>
+                                    <a href="{{ route('admin.intro.history.category.list', request()->query()) }}" class="btn btn-light" id="postCancel">취소</a>
+                                </div>
+                            </div><!-- .col -->
+
+                            @if(isset($category))
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-danger" id="postDelete">삭제</button>
+                                </div><!-- .col -->
+                            @endif
+                        </div><!-- .rwo -->
+                    </div><!-- .card-body -->
+                </div><!-- .card -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </form>
+
+    @if(isset($category) && $category->histories->count() === 0)
+        <form id="formDelete" method="post" action="{{ route('admin.intro.history.category.delete', compact('category'))}}">
+            @csrf
+            @method('DELETE')
+        </form>
+    @endif
+@endsection
+
+@push('scripts')
+<script src="/assets/admin/js/notification.js"></script>
+@endPush
+
+@pushIf(isset($category), 'scripts')
+<script>
+'use strict';
+
+$(function () {
+    $('#formDelete').on('submit', function () {
+        return confirm('{{ __('jt.AL-04') }}');
+    });
+
+    $('#postDelete').on('click', function () {
+        if ($('#formDelete').length > 0) {
+            $('#formDelete').trigger('submit');
+        } else {
+            alert('{{ __('jt.AL-05', ['count' => $category->histories->count()]) }}');
+        }
+    });
+});
+</script>
+@endPushIf

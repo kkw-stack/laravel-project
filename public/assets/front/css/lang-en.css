@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+/*
+ * File    : lang-en.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * LAYOUT
+ * MAIN
+ * MANUAL
+ * RESERVATION
+ * RWD
+ */
+
+
+
+/* **************************************** *
+ * LAYOUT
+ * **************************************** */
+/* HEADER */
+html[lang='en'] #menu > li { max-width: 160rem; }
+
+
+
+/* **************************************** *
+ * MAIN
+ * **************************************** */
+html[lang='en'] .main-visual__message span { top: 0; }
+
+
+
+/* **************************************** *
+ * MANUAL
+ * **************************************** */
+html[lang='en'] .menual-location-traffic__data-value span + span:before { top: 0; }
+
+
+
+/* **************************************** *
+ * RESERVATION
+ * **************************************** */
+html[lang='en'] .jt-timepicker__label br.smbr { display: block !important; }
+
+
+
+/* **************************************** *
+ * RWD
+ * **************************************** */
+@media (max-width: 1680px){
+
+    /* MAIN */
+    html[lang='en'] .main-construct__content .main-section__desc br { display: none; }
+    
+}
+
+@media (max-width: 1480px){
+
+    /* INTRODUCE */
+    html[lang='en'] .introduce-about__identity-desc br { display: none; }
+
+}
+
+@media (max-width: 1200px){
+
+    /* CONSTRUCT */
+    html[lang='en'] .construct-seongok-seowon__gallery-desc br { display: none; }
+    
+    /* MANUAL */
+    html[lang='en'] .maunal-service-gallery__sticky-desc br { display: none; }
+
+}
+
+@media (max-width: 1023px){
+
+    /* HEADER */
+    html[lang='en'] #menu > li { max-width: 100%; }
+
+    /* INTRODUCE */
+    html[lang='en'] .introduce-about__visual-section p br { display: none; }
+    html[lang='en'] .introduce-about__keypoint-desc br { display: none; }
+
+    /* CONSTRUCT */
+    html[lang='en'] body.construct-seongok-seowon .construct-visual__desc br { display: none; }
+    html[lang='en'] .construct-seongok-seowon__intro .article__section-desc br { display: none; }
+    html[lang='en'] body.construct-visitor-center .construct-visual__section--02 .construct-visual__desc br { display: none; }
+    html[lang='en'] body.construct-pezo-restaurant .construct-visual__section--03 .construct-visual__desc br { display: none; }
+
+}
+
+@media (max-width: 860px){
+
+    /* CONSTRUCT */
+    html[lang='en'] .construct-seongok-seowon__gallery-title br { display: none; }
+    html[lang='en'] .construct-seongok-seowon__director .article__section-desc br { display: none; }
+
+}
+
+@media (max-width: 540px){
+
+    /* LAYOUT */
+    html[lang='en'] .footer__menu-list { justify-content: start; }
+
+    /* MAIN */
+    html[lang='en'] body.jt-orientation--portrait .main-garden-korea__text { min-height: 296rem; }
+
+    /* MANUAL */
+    html[lang='en'] .menual-location-traffic__subject br.smbr { display: none !important; }
+
+}

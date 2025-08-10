@@ -1,0 +1,140 @@
+@charset "utf-8";
+
+/*
+ * File    : sub-manual.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * VISITOR GUIDE
+ * LOCATION
+ * FAQ
+ * F&B, WEDDING, RENTALS GALLERY
+ * HOVER
+ */
+
+
+
+/* **************************************** *
+ * VISITOR GUIDE
+ * **************************************** */
+.manual-visitor-guide-visual__bg { padding-top: 46.62%; background: no-repeat center center / cover; }
+.manual-visitor-guide-visual__bg--mobile { display: none; }
+body.jt-orientation--portrait .manual-visitor-guide-visual__bg { padding-top: 760rem; }
+.manual-visitor-guide-anchor { padding-top: 160rem; }
+.manual-visitor-guide-anchor__sticky { flex: 1; }
+.manual-visitor-guide-anchor__sticky-inner { position: sticky; top: 100rem; }
+.manual-visitor-guide-anchor__list a { display: inline-block; color: var(--color-gray-700); transition: color .3s; }
+.manual-visitor-guide-anchor__list a > span { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6rem; text-decoration-color: transparent; transition: text-decoration-color .3s; }
+.manual-visitor-guide-anchor__list a.jt-anchor--current { color: var(--color-black); }
+.manual-visitor-guide-anchor__list a.jt-anchor--current > span { text-decoration-color: currentColor; }
+.manual-visitor-guide-anchor__list > li + li { margin-top: 12rem; }
+.manual-visitor-guide-anchor__container { display: flex; justify-content: space-between; align-items: stretch; gap: 100rem; }
+.manual-visitor-guide-anchor__content { width: 58.85%; max-width: 732rem; margin-top: -100rem; }
+.manual-visitor-guide-anchor__section { padding: 100rem 0; border-bottom: 1px solid var(--color-gray-300); }
+.manual-visitor-guide-anchor__section:last-child { padding-bottom: 0; border-bottom: 0; }
+.manual-visitor-guide-anchor__section-inner { margin-top: 36rem; }
+.manual-visitor-guide-anchor__section ul > li { position: relative; padding-left: 16rem; color: var(--color-gray-900); }
+.manual-visitor-guide-anchor__section ul > li:before { content: ''; position: absolute; left: 0; top: calc(var(--font-lineheight-ko-08) / 2); margin-top: -3rem; width: 6rem; height: 6rem; background: var(--color-gray-500); border-radius: 50%; }
+.manual-visitor-guide-anchor__section ul > li + li { margin-top: 36rem; }
+.manual-visitor-guide-anchor__section ul > li > ul { margin-top: 8rem; }
+.manual-visitor-guide-anchor__section ul > li > ul > li { color: var(--color-gray-800); }
+.manual-visitor-guide-anchor__section ul > li > ul > li:before { top: calc(var(--font-lineheight-ko-09) / 2); margin-top: -1rem; height: 2rem; border-radius: 0; background: var(--color-gray-700); }
+.manual-visitor-guide-anchor__section ul > li > ul > li + li { margin-top: 8rem; }
+.manual-visitor-guide-anchor__section ul li a { display: inline-block; transition: color .3s; }
+.manual-visitor-guide-anchor__section .jt-single__content { margin: 8rem 0 60rem; }
+.manual-visitor-guide-anchor__section .jt-single__content p { display: none; }
+.manual-visitor-guide-anchor__section .jt-single__content table + p { display: block; margin-top: 12rem; color: var(--color-gray-800); font-size: var(--font-size-ko-13); line-height: var(--font-lineheight-ko-13); font-weight: 400; }
+
+
+
+/* **************************************** *
+ * LOCATION
+ * **************************************** */
+.menual-location-map.article__section { padding: 0; }
+.menual-location-map__container { position: relative; padding-top: 46.62%; background: var(--color-gray-200); }
+.menual-location-map__script { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .3s; }
+.menual-location-map__script.jt-map--init { opacity: 1; }
+.menual-location-map__script .jt-custom-marker { position: relative; top: 20rem; background: var(--color-black); width: 52rem; height: 52rem; border-radius: 8rem; display: flex; align-items: center; justify-content: center; }
+.menual-location-map__script .jt-custom-marker .jt-icon { width: 100%; height: 100%; }
+.menual-location-map__script .jt-custom-marker__identity { width: 25rem; height: 25rem; }
+.menual-location-map__script .jt-custom-marker__identity .jt-icon svg path { fill: var(--color-white); }
+.menual-location-map__script .jt-custom-marker__chevron { position: absolute; top: 100%; left: 50%; width: 14rem; height: 11rem; transform: translate(-7rem, -4rem); background: var(--color-black); mask-image: url(../images/icon/jt-marker-chevron.svg); mask-size: cover; }
+.menual-location-map__script .gm-style img { filter: grayscale(100%); }
+.menual-location-map__script .gm-style iframe + div { border: none !important; }
+.menual-location-map__data { margin-top: 16rem; display: flex; justify-content: space-between; gap: 40rem; }
+.menual-location-map__address { display: flex; gap: 8rem; }
+.menual-location-map__address p { color: var(--color-gray-800); }
+.menual-location-map__outlink { display: flex; gap: 16rem; }
+
+.menual-location-traffic { padding-top: 160rem; }
+.menual-location-traffic__container { display: flex; justify-content: space-between; align-items: stretch; gap: 100rem; }
+
+.menual-location-traffic__sticky { flex: 1; }
+.menual-location-traffic__sticky-inner { position: sticky; top: 100rem; }
+
+.menual-location-traffic__tab { margin-top: 36rem; }
+.menual-location-traffic__tab > li + li { margin-top: 12rem; }
+.menual-location-traffic__tab > li > a { display: inline-block; color: var(--color-gray-700); transition: color .3s; }
+.menual-location-traffic__tab > li > a > span { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6rem; text-decoration-color: transparent; transition: text-decoration-color .3s; }
+.menual-location-traffic__tab > li > a.jt-tab--active { color: var(--color-black); }
+.menual-location-traffic__tab > li > a.jt-tab--active > span { text-decoration-color: currentColor; }
+
+.menual-location-traffic__content { width: 58.85%; max-width: 732rem; min-height: 330rem; }
+
+.menual-location-traffic__list > li { padding: 60rem 0; }
+.menual-location-traffic__list > li:first-child { padding-top: 0; }
+.menual-location-traffic__list > li:last-child { padding-bottom: 0; }
+.menual-location-traffic__list > li + li { border-top: 1px solid var(--color-gray-300); }
+
+.menual-location-traffic__data { margin-top: 36rem; }
+.menual-location-traffic__data > li { position: relative; padding-left: 16rem; }
+.menual-location-traffic__data > li:before { content: ''; position: absolute; left: 0; top: calc(var(--font-lineheight-ko-08) / 2); margin-top: -3rem; width: 6rem; height: 6rem; background: var(--color-gray-500); border-radius: 50%; }
+.menual-location-traffic__data > li + li { margin-top: 24rem; }
+.menual-location-traffic__data-key { display: block; }
+.menual-location-traffic__data-value { margin-top: 8rem; color: var(--color-gray-800); font-size: 0; }
+.menual-location-traffic__data-value span { padding: 2rem 0; }
+.menual-location-traffic__data-value span + span:before { content: ''; display: inline-block; position: relative; top: -1rem; width: 10rem; height: 10rem; margin: 0 8rem; background: url(../images/icon/jt-step-next.svg) }
+
+
+
+/* **************************************** *
+ * FAQ
+ * **************************************** */
+
+
+
+/* **************************************** *
+ * F&B, WEDDING, RENTALS GALLERY
+ * **************************************** */
+.maunal-service-gallery { padding-top: 160rem; }
+.maunal-service-gallery__sticky { flex: 1; position: relative; }
+.maunal-service-gallery__sticky-inner { position: sticky; top: 60rem; padding-top: 100rem; }
+.maunal-service-gallery__sticky-desc { margin-top: 50rem; color: var(--color-gray-900); }
+.maunal-service-gallery__sticky-desc p + p { margin-top: 20rem; }
+.maunal-service-gallery__sticky-contact { margin-top: 40rem; display: flex; gap: 16rem; }
+.maunal-service-gallery__sticky-contact span { color: var(--color-gray-800); }
+.maunal-service-gallery__sticky-contact a { display: inline-block; transition: color .3s; }
+.maunal-service-gallery__container { display: flex; justify-content: space-between; align-items: stretch; gap: 100rem; }
+.maunal-service-gallery__content { width: 48.8%; max-width: 732rem; }
+
+.maunal-service-gallery__item .jt-lazyload { padding-top: 109.28%; }
+
+
+
+/* **************************************** *
+ * HOVER
+ * **************************************** */
+@media (hover: hover) and (pointer: fine) {
+
+    /* VISITOR GUIDE */
+    .manual-visitor-guide-anchor__list a:hover { color: var(--color-black); }
+    .manual-visitor-guide-anchor__section ul li a:hover { color: var(--color-black); }
+
+    /* LOCATION */
+    .menual-location-traffic__tab > li > a:hover { color: var(--color-black); }
+
+    /* F&B, WEDDING, RENTALS GALLERY */
+    .maunal-service-gallery__sticky-contact a:hover { color: var(--color-black); }
+    
+
+}

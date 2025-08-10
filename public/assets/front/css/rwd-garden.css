@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-garden.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+    /* KOREA */
+    .garden-korea-motion__item--01 .garden-korea-motion__image { width: 31.73%; }
+    .garden-korea-motion__item--02 .garden-korea-motion__image { width: 31.73%; }
+    .garden-korea-motion__item--03 .garden-korea-motion__image { width: 50.6%; }
+    .garden-korea-motion__item--04 .garden-korea-motion__image { width: 25.01%; right: 10.56%; }
+
+    .garden-korea-gallery__slide { max-width: 75%; }
+    .garden-korea-gallery__slider .swiper-button { top: calc(100vw * .75 * .5696 / 2); }
+    .garden-korea-gallery__slider .swiper-button-prev { left: auto; right: calc(100% - 64rem - 40rem); }
+    .garden-korea-gallery__slider .swiper-button-next { right: auto; left: calc(100% - 64rem - 40rem);  }
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+
+    /* KOREA */
+    .garden-korea-motion__item--01 .garden-korea-motion__image { left: 40rem; }
+    .garden-korea-motion__item--02 .garden-korea-motion__image { right: 40rem; }
+    .garden-korea-motion__item--03 .garden-korea-motion__image { left: 40rem; }
+
+    .garden-korea-gallery__slide { margin: 0 12rem; }
+    .garden-korea-gallery__slider .swiper-button { width: 48rem; height: 48rem; margin-top: -24rem; }
+    .garden-korea-gallery__slider .swiper-button .jt-icon { width: 16rem; height: 16rem; }
+    .garden-korea-gallery__slider .swiper-button-prev { right: calc(100% - 48rem - 40rem); }
+    .garden-korea-gallery__slider .swiper-button-next { left: calc(100% - 48rem - 40rem); }
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+    /* KOREA */
+    .garden-korea-gallery__slider .swiper-button { display: none; }
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* KOREA */
+    body.jt-orientation--portrait .garden-korea-motion__background { padding-top: 50vh; }
+    .garden-korea-motion__item--01 .garden-korea-motion__image { left: 30rem; width: 300rem; }
+    .garden-korea-motion__item--02 .garden-korea-motion__image { right: 30rem; width: 300rem; }
+    .garden-korea-motion__item--03 .garden-korea-motion__image { left: 30rem; width: 480rem; }
+    .garden-korea-motion__item--04 .garden-korea-motion__image { right: 30rem; width: 300rem; }
+
+    .garden-korea-notice .jt-board__list { margin-top: 48rem; }
+    
+    .garden-korea-gallery__tab { overflow: auto; white-space: nowrap; scrollbar-width: none; margin: 0 -30rem; padding: 0 30rem; }
+    .garden-korea-gallery__tab::-webkit-scrollbar { display: none; }
+    .garden-korea-gallery__slide { margin: 0 8rem; max-width: 690rem; }
+    .garden-korea-gallery__desc br { display: none; }
+
+    .garden-koran__map-popup .jt-popup__image { max-width: 600rem; }
+    
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* KOREA */
+    body.jt-orientation--portrait .garden-korea-motion__background { padding-top: 69.23%; }
+    .garden-korea-motion__background--desktop { display: none; }
+    .garden-korea-motion__background--mobile { display: block; }
+
+    .garden-korea-motion__item--01 .garden-korea-motion__image { width: 215rem; left: 20rem; }
+    .garden-korea-motion__item--02 { margin-top: 213rem; }
+    .garden-korea-motion__item--02 .garden-korea-motion__image { width: 215rem; right: 20rem; }
+    .garden-korea-motion__item--03 { margin-top: 266rem; }
+    .garden-korea-motion__item--03 .garden-korea-motion__image { width: 317rem; left: 20rem; }
+    .garden-korea-motion__item--04 { margin-top: 178rem; }
+    .garden-korea-motion__item--04 .garden-korea-motion__image { width: 215rem; right: 20rem; }
+
+    .garden-korea-gallery__tab { margin: 0 -20rem; padding: 0 20rem; }
+    .garden-korea-gallery__tab a { margin: 0 6rem; }
+    .garden-korea-gallery__tab a span { font-size: 21rem; line-height: 34rem; }
+    .garden-korea-gallery__desc { font-weight: 400; }
+    .garden-korea__map { margin-top: 48rem; }
+    .garden-korea-gallery__slider { margin-top: 60rem; }
+    .garden-korea-gallery__slide { margin: 0 5rem; max-width: 320rem; }
+    .garden-korea-gallery__image { padding-top: 134.37%; }
+    .garden-korea-gallery__image--desktop { display: none; }
+    .garden-korea-gallery__image--mobile { display: block; }
+    .garden-korea-gallery__video { padding-top: 134.37%; }
+    .garden-korea-gallery__video--desktop { display: none; }
+    .garden-korea-gallery__video--mobile { display: block; }
+    .garden-korea-gallery__data { text-align: center; padding: 0 8rem; }
+    .garden-korea-gallery__data p { margin-top: 8rem; }
+
+}

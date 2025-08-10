@@ -1,0 +1,6 @@
+config:
+    app-dest: "/var/www"
+    artifact-dest: "/medongaule"
+    deploy-user: "studiojt"
+    docker-compose-file: "docker-compose.yaml"
+    target-env: "development"

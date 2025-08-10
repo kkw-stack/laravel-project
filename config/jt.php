@@ -1,0 +1,22 @@
+<?php
+return [
+    'domain' => explode(':', env('APP_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)))[0],
+    'nice_client_id' => env('JT_NICE_CLIENT_ID'),
+    'nice_secret' => env('JT_NICE_SECRET'),
+    'nice_product_id' => env('JT_NICE_PRODUCT_ID'),
+    'kakao_client_id' => env('JT_KAKAO_CLIENT_ID'),
+    'kakao_secret' => env('JT_KAKAO_SECRET'),
+    'naver_client_id' => env('JT_NAVER_CLIENT_ID'),
+    'naver_secret' => env('JT_NAVER_SECRET'),
+    'google_client_id' => env('JT_GOOGLE_CLIENT_ID'),
+    'google_secret' => env('JT_GOOGLE_SECRET'),
+    'easypay_mall_id' => env('JT_EASYPAY_MALL_ID', ''),
+    'easypay_secret_key' => env('JT_EASYPAY_SECRET_KEY', ''),
+    'easypay_test_mall_id' => env('JT_EASYPAY_TEST_MALL_ID', ''),
+    'easypay_test_secret_key' => env('JT_EASYPAY_TEST_SECRET_KEY', ''),
+    'aligo_apikey' => env('JT_ALIGO_APIKEY', ''),
+    'aligo_userid' => env('JT_ALIGO_USERID', ''),
+    'aligo_senderkey' => env('JT_ALIGO_SENDERKEY', ''),
+    'aligo_sender' => env('JT_ALIGO_SENDER', ''),
+    'kma_apikey' => env('JT_KMA_API_KEY', ''),
+];

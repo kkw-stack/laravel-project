@@ -1,0 +1,252 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-main.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+    /* CONNECT */
+    .main-connect { padding: 200rem 0 220rem; }
+
+    /* CONSTRUCT */
+    .main-construct__image-wrap { max-width: 540rem; }
+
+    /* DIRECTOR */
+    .main-director__item--01 { width: 270rem; }
+    .main-director__item--02 { width: 313rem; top: 360rem; }
+    .main-director__item--03 { width: 428rem; top: 684rem; right: 136rem; }
+    .main-director__item--04 { width: 313rem; top: 1164rem; }
+    .main-director__item--05 { width: 270rem; top: 1364rem; }
+    .main-director__item--06 { width: 428rem; top: 1854rem; margin-left: -214rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+    /* CONNECT */
+    .main-connect { padding: 180rem 0 200rem; }
+
+    /* DIRECTOR */
+    .main-director__item--01 { width: 240rem; }
+    .main-director__item--02 { width: 278rem; top: 320rem; }
+    .main-director__item--03 { width: 380rem; top: 608rem; right: 122rem; }
+    .main-director__item--04 { width: 278rem; top: 1035rem; }
+    .main-director__item--05 { width: 240rem; top: 1212rem; }
+    .main-director__item--06 { width: 380rem; top: 1648rem; margin-left: -190rem; }
+
+    /* SCENERY */
+    .main-scenery { padding: 200rem 0; }
+
+    /* BOARD */
+    .main-board { padding: 200rem 0; }
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+
+    /* LAYOUT */
+    .main-section__title + .main-section__desc { margin-top: 40rem; }
+    .main-section__more { margin-top: 40rem; }
+
+    /* VISUAL */
+    .main-visual .swiper-controls { right: 30rem; bottom: 30rem; }
+    .main-visual__weather { left: 30rem; bottom: 30rem; gap: 41rem; }
+    .main-visual__weather-item + .main-visual__weather-item:before { left: -21rem; }
+
+    /* CONNECT */
+    .main-connect { padding: 160rem 0 180rem; }
+    
+    /* GARDEN */
+    .main-garden__desc { margin-top: 6rem; }
+    .main-garden__controls { gap: 8rem; }
+
+    /* CONSTRUCT */
+    .main-construct__content .main-section__desc p { line-height: 40rem; }
+    .main-construct__content .main-section__desc br { display: none; }
+    .main-construct__content .main-section__more { margin-top: 40rem; }
+    .main-construct__image-wrap { max-width: 480rem; }
+
+    /* DIRECTOR */
+    .main-director__item--01 { width: 210rem; }
+    .main-director__item--02 { width: 244rem; top: 280rem; }
+    .main-director__item--03 { width: 332rem; top: 531rem; right: 106rem; }
+    .main-director__item--04 { width: 244rem; top: 906rem; }
+    .main-director__item--05 { width: 210rem; top: 1061rem; }
+    .main-director__item--06 { width: 332rem; top: 1442rem; margin-left: -166rem; padding-bottom: 140rem; }
+
+    /* SCENERY */
+    .main-scenery { padding: 140rem 0; }
+    .main-scenery__pagination { margin: 20rem auto -8rem; }
+
+    /* BOARD */
+    .main-board { padding: 140rem 0; }
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+    /* CONNECT */
+    .main-connect { padding: 140rem 0 160rem; }
+    
+    /* DIRECTOR */
+    .main-construct__container { gap: 40rem; }
+
+    /* DIRECTOR */
+    .main-director__item--08 { padding-bottom: 120rem; }
+
+    /* SCENERY */
+    .main-scenery { padding: 120rem 0; }
+
+    /* BOARD */
+    .main-board { padding: 120rem 0; }
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* VISUAL */
+    .main-visual .swiper-controls { display: none; }
+    .main-visual__weather { left: 24rem; gap: 29rem; max-width: calc(100% - 48rem); }
+    .main-visual__weather-item + .main-visual__weather-item:before { left: -17rem; }
+    .main-visual__weather-label { margin-bottom: 2rem; }
+
+    /* CONNECT */
+    .main-connect { padding: 120rem 0 140rem; }
+    
+    /* GARDEN */
+    .main-garden__desc { margin-top: 4rem; }
+    .main-garden__controls { gap: 6rem; margin-top: 16rem; }
+
+    /* CONSTRUCT */
+    .main-construct { padding: 100rem 0 120rem; }
+    .main-construct__container { flex-direction: column-reverse; gap: 0; }
+    .main-construct .main-section__title--mobile { display: block; }
+    .main-construct__content { width: 100%; }
+    .main-construct__content .main-section__title { display: none; }
+    .main-construct__content .main-section__desc { margin-top: 24rem; }
+    .main-construct__content .main-section__more { text-align: center; }
+    .main-construct__content { max-width: 480rem; }
+    .main-construct__image-wrap { margin-top: 40rem; }
+    .main-construct__anchor.main-construct__anchor--active { color: var(--color-black); }
+    .main-construct__anchor.main-construct__anchor--active > span:after { background: var(--color-black); }
+
+    /* DIRECTOR */
+    .main-director .pin-spacer { pointer-events: none; }
+    .main-director__sticky { height: 100svh; padding: 100rem 0 120rem; align-items: start; z-index: 1; }
+    .main-director__sticky:before { content: ''; position: absolute; left: -20rem; top: 0; right: -20rem; height: 400rem; background: linear-gradient(to bottom, var(--color-gray-100) 50%, transparent); z-index: -1; }
+    .main-director__sticky .main-section__more { display: none; }
+    .main-director__container { pointer-events: all; }
+    .main-director__more { display: block; width: 100%; position: absolute; bottom: 120rem; left: 0; text-align: center; }
+
+    .main-director__item--01 { padding-top: 360rem; }
+    .main-director__item--02 { top: 628rem; }
+    .main-director__item--03 { top: 1050rem; right: 0; }
+    .main-director__item--04 { top: 1482rem; }
+    .main-director__item--05 { top: 1904rem; }
+    .main-director__item--06 { top: 2172rem; padding-bottom: 220rem; }
+
+    /* SCENERY */
+    .main-scenery { padding: 100rem 0 120rem; }
+    .main-scenery .main-scenery__slider { margin-top: 48rem; }
+    .main-scenery__pagination { margin: 16rem auto -6rem; max-width: 100rem; }
+    .main-scenery__bullet { width: 20rem; height: 20rem; }
+
+    /* BOARD */
+    .main-board { padding: 100rem 0 120rem; }
+    .main-board .jt-board__list { margin-top: 48rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* LAYOUT */
+    .main-section__desc p + p { margin-top: 16rem; }
+    .main-section__desc br { display: none; }
+    
+    /* VISUAL */
+    .main-visual__slider { border-width: 0; }
+    .main-visual__slide--desktop { display: none; }
+    .main-visual__slide--mobile { display: block; }
+    .main-visual__overlay { height: 100%; background: linear-gradient(180deg, transparent 84.12%, rgba(0, 0, 0, .2) 100%); }
+    .main-visual__weather { left: 20rem; max-width: calc(100% - 40rem); }
+    .main-visual__weather-item { display: none; }
+    .main-visual__weather-mobile { display: block; color: var(--color-white); }
+    .main-visual__weather-row { display: flex; align-items: center; gap: 8rem; }
+    .main-visual__weather-temp { display: flex; align-items: center; gap: 2rem; }
+    .main-visual__weather-temp .jt-icon { width: 30rem; height: 30rem; }
+    .main-visual__weather-temp .jt-icon svg path { fill: var(--color-white); }
+
+    .main-visual__identity { width: 160rem; }
+
+    /* CONNECT */
+    .main-connect { padding: 100rem 0 120rem; }
+
+    /* GARDEN */
+    .main-garden__bg--desktop { display: none; }
+    .main-garden__bg--mobile { display: block; }
+    .main-garden__desc br { display: none; }
+
+    /* CONSTRUCT */
+    .main-construct { padding: 80rem 0 100rem; }
+    .main-construct__content .main-section__desc p { line-height: 34rem; }
+
+    /* DIRECTOR */
+    .main-director__sticky { padding: 80rem 0 100rem; }
+    .main-director__sticky .main-section__title + .main-section__desc { margin-top: 4rem; }
+    .main-director__sticky .main-section__more { bottom: 100rem; }
+    .main-director__more { bottom: 100rem; }
+
+    .main-director__item--01 { width: 170rem; padding-top: 320rem; }
+    .main-director__item--02 { width: 170rem; top: 556rem; }
+    .main-director__item--03 { width: 260rem; top: 880rem; }
+    .main-director__item--04 { width: 170rem; top: 1240rem; }
+    .main-director__item--05 { width: 170rem; top: 1565rem; }
+    .main-director__item--06 { width: 260rem; top: 1800rem; margin-left: -130rem; padding-bottom: 200rem; }
+
+    /* SCENERY */
+    .main-scenery__pagination { margin: 12rem auto -6rem; }
+
+    /* BOARD */
+    .main-board { padding: 80rem 0 100rem; }
+
+}

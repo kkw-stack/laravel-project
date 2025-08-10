@@ -1,0 +1,99 @@
+server {
+    server_tokens off;
+
+    server_name www.${SERVER_NAME};
+    return 301 https://${SERVER_NAME}$request_uri;
+}
+
+server {
+    server_tokens off;
+    listen 80;
+    listen [::]:80;
+    http2 on;
+
+    server_name ${SERVER_NAME};
+
+    index index.php index.html;
+    root /var/www/html/public;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+
+    # 성능 설정
+    charset utf-8;
+    client_max_body_size 300M;
+    client_body_timeout 180s;
+    client_header_timeout 180s;
+
+    # PHP의 성능 향상 -> 없으면 추가해주도록 하자
+    sendfile    on;
+    tcp_nopush  off;
+
+    # fastcgi 버퍼 설정 - no 502 errors!
+    proxy_connect_timeout 180s;
+    proxy_send_timeout 180s;
+    proxy_read_timeout 180s;
+    proxy_buffers 64 16k;
+
+    fastcgi_connect_timeout 180s;
+    fastcgi_send_timeout 180s;
+    fastcgi_read_timeout 180s;
+    send_timeout 180s;
+
+    index index.php;
+    
+    # php set
+    set $cache_uri $request_uri;
+    
+    error_page 403 500 =404 /index.php;
+    error_page 404 /index.php;
+
+    location / {
+        gzip_static on;
+        try_files $uri $uri/ /index.php?$query_string;
+
+        # for OPTIONS return these headers and HTTP 200 status
+        if ($request_method = OPTIONS) {
+            add_header Access-Control-Allow-Methods "*";
+            add_header Access-Control-Allow-Headers "*";
+            add_header Access-Control-Allow-Origin "*";
+            return 200;
+        }
+    }
+ 
+    location = /favicon.ico { 
+        access_log off; 
+        log_not_found off;
+    }
+
+    location = /robots.txt {
+        access_log off;
+        log_not_found off;
+    }
+
+    location ~ \.php$ {
+        try_files $uri $uri/ /index.php?$query_string =404 /index.php;
+        include fastcgi_params;
+        fastcgi_pass php-fpm;
+        fastcgi_index index.php;
+        fastcgi_param HTTP_X-Forwarded-Proto https;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        charset utf-8;
+    }
+
+    fastcgi_hide_header X-Powered-By;
+    fastcgi_hide_header vary;
+
+    # Enable Cache Control
+    location ~* \.(?:jpg|jpeg|png|gif|ico|gz|svg|svgz|ogg|mp4|webm|ogv|htc|cur|woff|woff2|otf|ttf)$ {
+        expires 1y;
+        access_log off;
+        add_header Cache-Control "public";
+    }
+
+    location ~* \.(?:css|js)$ {
+        expires 1y;
+        access_log off;
+        add_header Cache-Control "public";
+    }
+}

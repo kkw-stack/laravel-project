@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/*
+ * File    : font.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * PRETENDARD
+ */
+
+
+
+/* ************************************** *
+ * PRETENDARD
+ * ************************************** */
+ @font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    src: url('../fonts/Pretendard/Pretendard-Regular.subset.woff2') format('woff2'), 
+         url('../fonts/Pretendard/Pretendard-Regular.subset.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    src: url('../fonts/Pretendard/Pretendard-Medium.subset.woff2') format('woff2'), 
+         url('.../fonts/Pretendard/Pretendard-Medium.subset.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    src: url('../fonts/Pretendard/Pretendard-SemiBold.subset.woff2') format('woff2'), 
+         url('../fonts/Pretendard/Pretendard-SemiBold.subset.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'PretendardJP';
+   font-weight: 500;
+   src: url('../fonts/Pretendard/PretendardJP-Medium.subset.woff2') format('woff2'), 
+        url('.../fonts/Pretendard/PretendardJP-Medium.subset.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'PretendardJP';
+   font-weight: 600;
+   src: url('../fonts/Pretendard/PretendardJP-SemiBold.subset.woff2') format('woff2'), 
+        url('.../fonts/Pretendard/PretendardJP-SemiBold.subset.woff') format('woff');
+}

@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/*
+ * File    : sub-construct.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * VISUAL
+ * SEONGOK SEOWON
+ * ÜBERHAUS
+ */
+
+
+
+ /* **************************************** *
+ * VISUAL
+ * **************************************** */
+/* Layout */
+body[class^=construct-] .main-container { padding-top: 0; overflow: hidden; }
+
+/* Visual */
+.construct-visual__section { position: relative; height: 100vh; overflow: hidden; }
+html.kakao .construct-visual__section { height: var(--full-height); }
+.construct-visual__section:nth-child(n+2) { position: absolute; top: 100%; left: 0; width: 100%; }
+.construct-visual__video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.construct-visual__video--mobile { display: none; }
+.construct-visual__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: no-repeat center center / cover; }
+.construct-visual__bg--mobile { display: none; }
+.construct-visual__content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
+.construct-visual__content:before { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: var(--color-black); opacity: .4; }
+.construct-visual__title { color: var(--color-white); }
+.construct-visual__desc { color: var(--color-white); }
+.construct-visual__title + .construct-visual__desc { margin-top: 12rem; opacity: .8; }
+
+.construct-visual__section--01 .construct-visual__content:before { display: none; }
+
+
+
+/* **************************************** *
+ * SEONGOK SEOWON
+ * **************************************** */
+body.construct-seongok-seowon .construct-visual__title + .construct-visual__desc { opacity: .9; }
+ 
+.construct-seongok-seowon__intro.article__section { padding-top: 160rem; padding-bottom: 0; }
+.construct-seongok-seowon__intro-bg { height: 800rem; background: no-repeat center center / cover; margin: 100rem 50rem 0; }
+
+.construct-seongok-seowon__gallery { padding-top: 200rem; }
+.construct-seongok-seowon__gallery-grid { display: flex; gap: 220rem; }
+.construct-seongok-seowon__gallery-group { flex: 1; display: flex; flex-direction: column; gap: 120rem; }
+.construct-seongok-seowon__gallery-data { margin-top: 20rem; }
+.construct-seongok-seowon__gallery-name { display: block; }
+.construct-seongok-seowon__gallery-desc { margin-top: 4rem; color: var(--color-gray-900); }
+
+.construct-seongok-seowon__gallery-item--01 .jt-lazyload { padding-top: 118.75%; }
+.construct-seongok-seowon__gallery-item--02 .jt-lazyload { padding-top: 100%; }
+.construct-seongok-seowon__gallery-item--03 .jt-lazyload { padding-top: 118.75%; }
+.construct-seongok-seowon__gallery-item--04 .jt-lazyload { padding-top: 100%; }
+.construct-seongok-seowon__gallery-item--05 .jt-lazyload { padding-top: 71.87%; }
+.construct-seongok-seowon__gallery-item--06 .jt-lazyload { padding-top: 118.75%; }
+.construct-seongok-seowon__gallery-item--07 .jt-lazyload { padding-top: 100%; }
+
+.construct-seongok-seowon__director { background: var(--color-gray-200); padding-top: 200rem; }
+.construct-seongok-seowon__director-source { text-align: center; margin-top: 8rem; }
+.construct-seongok-seowon__director-source cite { color: var(--color-gray-700); }
+.construct-seongok-seowon__director-gallery { margin-top: 100rem; }
+.construct-seongok-seowon__director-image { display: inline-block; height: 600rem; vertical-align: top; margin-left: 36rem; }
+.construct-seongok-seowon__director-image .jt-lazyload { height: 100%; }
+
+.construct-seongok-seowon__director-image--01 { width: calc(600rem * .6525); }
+.construct-seongok-seowon__director-image--02 { width: calc(600rem * 1.3166); }
+.construct-seongok-seowon__director-image--03 { width: calc(600rem * 1); }
+.construct-seongok-seowon__director-image--04 { width: calc(600rem * .7933); }
+.construct-seongok-seowon__director-image--05 { width: calc(600rem * .7933); }
+.construct-seongok-seowon__director-image--06 { width: calc(600rem * .7933); }
+.construct-seongok-seowon__director-image--07 { width: calc(600rem * 1.3166); }
+
+
+
+/* **************************************** *
+ * ÜBERHAUS
+ * **************************************** */
+body.construct-pezo-restaurant .construct-visual__section--02 .construct-visual__content:before { opacity: .3; }

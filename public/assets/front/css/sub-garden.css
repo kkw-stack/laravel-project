@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+/*
+ * File    : sub-garden.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * KOREA
+ * HOVER
+ */
+
+
+
+/* **************************************** *
+ * KOREA
+ * **************************************** */
+/* Layout */
+body.garden-korea .main-container { overflow: hidden; }
+
+/* Scroll motion */
+.garden-korea-motion { position: relative; }
+.garden-korea-motion:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(0deg, #f8f8f8 38%, transparent 100%); }
+html.kakao .garden-korea-motion:after { height: var(--fit-height); }
+.garden-korea-motion__sticky { position: absolute; left: 0; top: 0; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+html.kakao .garden-korea-motion__sticky { height: var(--fit-height); }
+.garden-korea-motion__background { position: absolute; top: 0; left: 0; width: 100%; padding-top: 30.68%; }
+.garden-korea-motion__background--mobile { display: none; }
+.garden-korea-motion__background .jt-background-video__vod video { clip-path: inset(0 0 1px 0); }
+
+.garden-korea-motion__gallery { position: relative; padding-top: 100vh; z-index: 1; }
+html.kakao .garden-korea-motion__gallery { padding-top: var(--full-height); }
+
+.garden-korea-motion__image { display: inline-block; vertical-align: middle; position: relative; }
+
+.garden-korea-motion__item--01 .garden-korea-motion__image { width: 604rem; left: 50rem; }
+.garden-korea-motion__item--01 .garden-korea-motion__image .jt-lazyload { padding-top: 125%; }
+.garden-korea-motion__item--02 { text-align: right; margin-top: 85rem; }
+.garden-korea-motion__item--02 .garden-korea-motion__image { width: 604rem; right: 50rem; }
+.garden-korea-motion__item--02 .garden-korea-motion__image .jt-lazyload { padding-top: 125%; }
+.garden-korea-motion__item--03 { margin-top: 371rem; }
+.garden-korea-motion__item--03 .garden-korea-motion__image { width: 963rem; left: 50rem; }
+.garden-korea-motion__item--03 .garden-korea-motion__image .jt-lazyload { padding-top: 65.21%; }
+.garden-korea-motion__item--04 { text-align: right; margin-top: 334rem; }
+.garden-korea-motion__item--04 .garden-korea-motion__image { width: 476rem; right: 201rem; }
+.garden-korea-motion__item--04 .garden-korea-motion__image .jt-lazyload { padding-top: 100%; }
+
+/* Gallery */
+.garden-korea-gallery { background: var(--color-gray-100); }
+.garden-korea-gallery__head { text-align: center; }
+.garden-korea-gallery__tab { font-size: 0; }
+.garden-korea-gallery__tab a { display: inline-block; vertical-align: top; margin: 0 12rem; color: var(--color-gray-600); transition: color .3s; }
+.garden-korea-gallery__tab a:first-child { margin-left: 0; }
+.garden-korea-gallery__tab a:last-child { margin-right: 0; }
+.garden-korea-gallery__tab a.jt-tab--active { color: var(--color-black); }
+
+.garden-korea-gallery__desc { margin-top: 24rem; color: var(--color-gray-900); text-align: center; }
+
+.garden-korea__map { margin-top: 40rem; text-align: center; }
+.garden-koran__map-popup .jt-popup__image { max-width: 730rem; }
+
+.garden-korea-gallery__image { padding-top: 56.96%; background: no-repeat center center / cover; }
+.garden-korea-gallery__image--mobile { display: none; }
+.garden-korea-gallery__video { position: relative; padding-top: 56.96%; }
+.garden-korea-gallery__video--mobile { display: none; }
+.garden-korea-gallery__video .jt-background-video__vod video { width: 100%; height: 100%; } 
+.garden-korea-gallery__video .jt-background-video__poster { width: 100%; height: 100%; }
+
+.garden-korea-gallery__data { margin-top: 20rem; }
+.garden-korea-gallery__data b { display: block; }
+.garden-korea-gallery__data p { margin-top: 4rem; color: var(--color-gray-900); }
+
+.garden-korea-gallery__slider { margin-top: 80rem; }
+.garden-korea-gallery__slide { max-width: 1264rem; margin: 0 18rem; opacity: .6; transition: opacity .3s; }
+.garden-korea-gallery__slide.swiper-slide-active, .garden-korea-gallery__slide.swiper-slide-duplicate-active { opacity: 1; }
+.garden-korea-gallery__slider .swiper-button { top: 360rem; width: 64rem; height: 64rem; margin-top: -32rem; background: rgba(255, 255, 255, .5); border-radius: 50%; transition: background .3s }
+.garden-korea-gallery__slider .swiper-button .jt-icon { width: 20rem; height: 20rem; }
+.garden-korea-gallery__slider .swiper-button .jt-icon svg path { fill: var(--color-gray-800); }
+.garden-korea-gallery__slider .swiper-button-prev { left: calc((100% - 1264rem) / 2 - 64rem - 96rem); }
+.garden-korea-gallery__slider .swiper-button-next { right: calc((100% - 1264rem) / 2 - 64rem - 96rem); }
+.garden-korea-gallery__slider:not(.swiper-initialized) .swiper-wrapper { justify-content: center; }
+.garden-korea-gallery__slider:not(.swiper-initialized) .garden-korea-gallery__slide { opacity: 1; }
+
+/* Board */
+.garden-korea-notice { background: var(--color-white); }
+.garden-korea-notice .jt-board__list { margin-top: 60rem; }
+
+
+
+/* **************************************** *
+ * HOVER
+ * **************************************** */
+@media (hover: hover) and (pointer: fine) {
+
+    /* KOREA */
+    .garden-korea-gallery__tab a:hover { color: var(--color-black); }
+    .garden-korea-gallery__slider .swiper-button:hover { background: var(--color-white); }
+
+}

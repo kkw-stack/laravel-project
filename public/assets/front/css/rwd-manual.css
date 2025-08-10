@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-manual.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+    
+    /* VISITOR GUIDE */
+    .manual-visitor-guide-anchor__list a > span { text-underline-offset: 5rem }
+    .manual-visitor-guide-anchor__container { gap: 80rem; }
+
+    /* F&B, WEDDING, RENTALS GALLERY */
+    .maunal-service-gallery__container { gap: 80rem; }
+    .maunal-service-gallery__sticky-inner { padding-top: 80rem; }
+
+    /* LOCATION */
+    .menual-location-traffic__container { gap: 80rem; }
+    .menual-location-traffic__sticky-inner { top: 80rem; }
+    .menual-location-traffic__content { min-height: auto; }
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+    
+    /* VISITOR GUIDE */
+    .manual-visitor-guide-anchor__container { gap: 60rem; }
+
+    /* F&B, WEDDING, RENTALS GALLERY */
+    .maunal-service-gallery__container { gap: 60rem; }
+    .maunal-service-gallery__sticky-inner { top: 40rem; }
+    .maunal-service-gallery__sticky-desc br { display: none; }
+
+    /* LOCATION */
+    .menual-location-traffic__container { gap: 60rem; }
+    .menual-location-traffic__sticky-inner { top: 68rem; }
+    .menual-location-traffic__tab > li > a > span { text-underline-offset: 5rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* VISITOR GUIDE */
+    .manual-visitor-guide-anchor__sticky { display: none; }
+    .manual-visitor-guide-anchor__content { max-width: inherit; width: 100%; }
+    .manual-visitor-guide-anchor__section { padding: 80rem 0; }
+    .manual-visitor-guide-anchor__section-inner { margin-top: 24rem; }
+    .manual-visitor-guide-anchor__section ul > li + li { margin-top: 24rem; }
+    html.ios .manual-visitor-guide-anchor__section ul > li:before { margin-top: -4rem; }
+    html.ios .manual-visitor-guide-anchor__section ul > li > ul > li:before { margin-top: -2rem; }
+    .manual-visitor-guide-anchor__section .jt-single__content { margin-bottom: 48rem; }
+    
+    /* F&B, WEDDING, RENTALS GALLERY */
+    .maunal-service-gallery__container { flex-direction: column; }
+    .maunal-service-gallery__sticky-inner { padding-top: 0; }
+    .maunal-service-gallery__sticky-desc { margin-top: 40rem; }
+    .maunal-service-gallery__content { max-width: inherit; width: 100%; }
+    .maunal-service-gallery__list { margin: 0 -30rem; }
+    .maunal-service-gallery__item { display: inline-block ; width: 300rem; margin-left: 16rem; vertical-align: top; }
+    
+    /* LOCATION */
+    .menual-location-map__data { flex-direction: column; gap: 12rem; }
+    .menual-location-traffic__container { flex-direction: column; gap: 32rem; }
+    .menual-location-traffic__sticky-inner h2 { position: absolute; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(0px 0px 99.9% 99.9%); overflow: hidden; height: 1px; width: 1px; padding: 0; border: 0; }
+    .menual-location-traffic__tab { font-size: 0; overflow: auto; white-space: nowrap; scrollbar-width: none; margin: 0 -30rem; padding: 0 30rem; }
+    .menual-location-traffic__tab::-webkit-scrollbar { display: none; }
+    .menual-location-traffic__tab > li { display: inline-block; margin: 0 14rem; }
+    .menual-location-traffic__tab > li:first-child { margin-left: 0; }
+    .menual-location-traffic__tab > li:last-child { margin-right: 0; }
+    .menual-location-traffic__tab > li + li { margin-top: 0; }
+    .menual-location-traffic__data { margin-top: 24rem; }
+    html.ios .menual-location-traffic__data > li:before { margin-top: -4rem; }
+    .menual-location-traffic__content { max-width: inherit; width: 100%; }
+
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* VISITOR GUIDE */
+    .manual-visitor-guide-visual__bg--desktop { display: none; }
+    .manual-visitor-guide-visual__bg--mobile { display: block; }
+    .manual-visitor-guide-visual__bg { padding-top: 177.14%; }
+    body.jt-orientation--portrait .manual-visitor-guide-visual__bg { padding-top: 177.14%; }
+    
+    .manual-visitor-guide-anchor__section { padding: 60rem 0; }
+    .manual-visitor-guide-anchor__section ul > li { padding-left: 12rem; }
+    .manual-visitor-guide-anchor__section ul > li:before { width: 4rem; height: 4rem; margin-top: -2rem; }
+    html.ios .manual-visitor-guide-anchor__section ul > li:before { margin-top: -3rem; }
+    html.ios .manual-visitor-guide-anchor__section ul > li > ul > li:before { margin-top: -1rem; }
+
+    .manual-visitor-guide-anchor__section .jt-single__content table + p { margin-top: 8rem; }
+
+    /* F&B, WEDDING, RENTALS GALLERY */
+    .maunal-service-gallery__sticky-desc { margin-top: 24rem; }
+    .maunal-service-gallery__sticky-desc p + p { margin-top: 16rem; }
+    .maunal-service-gallery__sticky-contact { margin-top: 24rem; gap: 12rem; }
+    .maunal-service-gallery__sticky-title br { display: none; }
+    .maunal-service-gallery__list { margin: 0 -20rem; }
+    .maunal-service-gallery__item { width: 250rem; margin-left: 10rem; }
+
+    /* LOCATION */
+    .menual-location-map__container { padding-top: 70%; }
+    .menual-location-map__address b { display: none; }
+    html.ios .menual-location-map__outlink .jt-btn__outlink .jt-icon { top: .5rem; }
+
+    .menual-location-traffic__tab { margin: 0 -20rem; padding: 0 20rem; }
+    .menual-location-traffic__tab > li { margin: 0 8rem; }
+    .menual-location-traffic__list > li { padding: 48rem 0; }
+    .menual-location-traffic__data > li { padding-left: 12rem; }
+    .menual-location-traffic__data > li:before { width: 4rem; height: 4rem; margin-top: -2rem; }
+    html.ios .menual-location-traffic__data > li:before { margin-top: -3rem; }
+    .menual-location-traffic__data-value span + span:before { margin: 0 6rem; }
+    html.mobile .menual-location-traffic__data-value span + span:before { top: -.5rem; }
+
+}

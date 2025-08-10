@@ -1,0 +1,69 @@
+:root {
+    /* COLOR */
+    --color-white: #FFF;
+    --color-black: #000;
+
+    --color-gray-100: #F8F8F8;
+    --color-gray-200: #F4F4F4;
+    --color-gray-300: #EEE;
+    --color-gray-400: #DDD;
+    --color-gray-500: #CCC;
+    --color-gray-600: #AAA;
+    --color-gray-700: #999;
+    --color-gray-800: #666;
+    --color-gray-900: #333;
+
+    /* FONT */
+    --font-primary: 'Pretendard', sans-serif;
+    --font-secondary: 'PretendardJP', 'Pretendard', sans-serif;
+
+    --letter-spacing: 0em;
+
+    --font-size-ko-01: 72rem;
+    --font-size-ko-02: 52rem;
+    --font-size-ko-03: 43rem;
+    --font-size-ko-04: 36rem;
+    --font-size-ko-05: 32rem;
+    --font-size-ko-06: 27rem;
+    --font-size-ko-07: 24rem;
+    --font-size-ko-08: 21rem;
+    --font-size-ko-09: 18rem;
+    --font-size-ko-10: 16rem;
+    --font-size-ko-11: 14rem;
+
+    --font-size-en-01: 72rem;
+    --font-size-en-02: 52rem;
+    --font-size-en-03: 43rem;
+    --font-size-en-04: 36rem;
+    --font-size-en-05: 32rem;
+    --font-size-en-06: 27rem;
+    --font-size-en-07: 24rem;
+    --font-size-en-08: 21rem;
+    --font-size-en-09: 18rem;
+    --font-size-en-10: 16rem;
+    --font-size-en-11: 14rem;
+
+    --font-lineheight-ko-01: 92rem;
+    --font-lineheight-ko-02: 72rem;
+    --font-lineheight-ko-03: 60rem;
+    --font-lineheight-ko-04: 48rem;
+    --font-lineheight-ko-05: 45rem;
+    --font-lineheight-ko-06: 36rem;
+    --font-lineheight-ko-07: 36rem;
+    --font-lineheight-ko-08: 34rem;
+    --font-lineheight-ko-09: 28rem;
+    --font-lineheight-ko-10: 24rem;
+    --font-lineheight-ko-11: 20rem;
+
+    --font-lineheight-en-01: 92rem;
+    --font-lineheight-en-02: 72rem;
+    --font-lineheight-en-03: 60rem;
+    --font-lineheight-en-04: 48rem;
+    --font-lineheight-en-05: 45rem;
+    --font-lineheight-en-06: 36rem;
+    --font-lineheight-en-07: 36rem;
+    --font-lineheight-en-08: 34rem;
+    --font-lineheight-en-09: 28rem;
+    --font-lineheight-en-10: 24rem;
+    --font-lineheight-en-11: 20rem;
+}

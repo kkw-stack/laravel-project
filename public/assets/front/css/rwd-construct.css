@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+/*
+ * File    : rwd-construct.css
+ * Author  : STUDIO-JT (JSH)
+ *
+ * SUMMARY :
+ * 1680px
+ * 1480px
+ * 1200px
+ * 1023px
+ * 860px
+ * 540px
+ */
+
+
+
+/* **************************************** *
+ * 1680px
+ * **************************************** */
+@media (max-width: 1680px){
+
+    /* SEONGOK SEOWON */
+    .construct-seongok-seowon__director-image { height: calc(100vw * .4); }
+    .construct-seongok-seowon__director-image--01 { width: calc(100vw * .4 * .6525); }
+    .construct-seongok-seowon__director-image--02 { width: calc(100vw * .4 * 1.3166); }
+    .construct-seongok-seowon__director-image--03 { width: calc(100vw * .4 * 1); }
+    .construct-seongok-seowon__director-image--04 { width: calc(100vw * .4 * .7933); }
+    .construct-seongok-seowon__director-image--05 { width: calc(100vw * .4 * .7933); }
+    .construct-seongok-seowon__director-image--06 { width: calc(100vw * .4 * .7933); }
+    .construct-seongok-seowon__director-image--07 { width: calc(100vw * .4 * 1.3166); }
+
+}
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+}
+
+
+
+/* **************************************** *
+ * 1200px
+ * **************************************** */
+@media (max-width: 1200px){
+
+    /* SEONGOK SEOWON */
+    .construct-seongok-seowon__intro.article__section { padding-top: 140rem; }
+    .construct-seongok-seowon__intro-bg { margin: 80rem 40rem 0; }
+
+    .construct-seongok-seowon__gallery-grid { gap: 140rem; }
+
+    .construct-seongok-seowon__director-image { margin-left: 24rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+    /* SEONGOK SEOWON */
+    .construct-seongok-seowon__intro.article__section { padding-top: 120rem; }
+
+    .construct-seongok-seowon__gallery-grid { gap: 120rem; }
+    .construct-seongok-seowon__gallery-group { gap: 100rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* VISUAL */
+    .construct-visual__desc br { display: none; }
+
+    /* SEONGOK SEOWON */
+    .construct-seongok-seowon__intro.article__section { padding-top: 100rem; }
+    .construct-seongok-seowon__intro .article__section-desc br { display: none; }
+    .construct-seongok-seowon__intro-bg { margin: 60rem 30rem 0; height: 640rem; }
+
+    .construct-seongok-seowon__gallery-grid { gap: 100rem; }
+    .construct-seongok-seowon__gallery-group { gap: 80rem; }
+    .construct-seongok-seowon__gallery-data { margin-top: 16rem; }
+
+    .construct-seongok-seowon__director-gallery { margin-top: 80rem; }
+    .construct-seongok-seowon__director-image { margin-left: 16rem; }
+
+}
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* VISUAL */
+    .construct-visual__video--desktop { display: none; }
+    .construct-visual__video--mobile { display: block; }
+    .construct-visual__bg--desktop { display: none; }
+    .construct-visual__bg--mobile { display: block; }
+
+    /* SEONGOK SEOWON */
+    .construct-seongok-seowon__intro.article__section { padding-top: 80rem; }
+    .construct-seongok-seowon__intro-bg { margin: 48rem 20rem 0; }
+
+    .construct-seongok-seowon__gallery-grid { flex-direction: column; gap: 60rem; }
+    .construct-seongok-seowon__gallery-group { gap: 60rem; }
+    .construct-seongok-seowon__gallery-item--01  { margin-top: -20rem; }
+
+    .construct-seongok-seowon__director-image { margin-left: 10rem; height: 280rem; }
+    .construct-seongok-seowon__director-image--01 { width: calc(280rem * .6525); }
+    .construct-seongok-seowon__director-image--02 { width: calc(280rem * 1.3166); }
+    .construct-seongok-seowon__director-image--03 { width: calc(280rem * 1); }
+    .construct-seongok-seowon__director-image--04 { width: calc(280rem * .7933); }
+    .construct-seongok-seowon__director-image--05 { width: calc(280rem * .7933); }
+    .construct-seongok-seowon__director-image--06 { width: calc(280rem * .7933); }
+    .construct-seongok-seowon__director-image--07 { width: calc(280rem * 1.3166); }
+
+}

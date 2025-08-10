@@ -1,0 +1,35 @@
+name: dev2-cicd
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - .github/workflows/**
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: write
+jobs:
+  ci:
+    name: Packaging
+    uses: ./.github/workflows/ci-suidc.yaml
+    with:
+      version: ${{ github.sha }}
+      php-image-tag: 8.3.9-fpm-bookworm
+      target-env: dev2
+      devops-bucket-name: ${{ vars.APPNAME }}-dev2-devops-bucket
+      app-dest: /project/dev/medongaule-2nd/www
+      artifact-dest: /project/dev/medongaule-2nd
+      deploy-user: studiojt
+      docker-compose-file: docker-compose.yaml
+      ip-allow-list: ${{ vars.IP_ALLOW_LIST }}
+    secrets: inherit
+  cd:
+    name: Deploy
+    needs: ci
+    uses: ./.github/workflows/cd.yaml
+    with:
+      version: ${{ github.sha }}
+      target-env: dev2
+      devops-bucket-name: ${{ vars.APPNAME }}-dev2-devops-bucket
+    secrets: inherit

@@ -1,0 +1,3 @@
+upstream php-fpm {
+    server main:9000;
+}
