@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # [메덩골정원](https://medongaule.com/)
 
 ## 서버 요구 사항
@@ -112,3 +113,6 @@ C:/php/php.ini 수정 : 기본적으로 활성화 되어 있는 extension이 존
 =======
 # laravel-project
 >>>>>>> 2201c510ac0a128a03acb605c56a2c44940b9382
+=======
+# laravel-project
+>>>>>>> 4be5b063f477c32b32acad2e58204e78db09d259
